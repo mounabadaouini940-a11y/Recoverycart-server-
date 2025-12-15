@@ -1,35 +1,35 @@
 ‏const express = require("express");
-‏const bodyParser = require("body-parser");
-‏const nodemailer = require("nodemailer");
-‏const cors = require("cors");
+const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
+const cors = require("cors");
 
-‏const app = express();
-‏app.use(cors());
-‏app.use(bodyParser.json());
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
 /*
-‏CONFIGURATION
+CONFIGURATION
 كل متجر خاصو يعمّر هاد المعلومات ديالو
 */
-‏const STORE_EMAIL = process.env.STORE_EMAIL;
-‏const STORE_APP_PASSWORD = process.env.STORE_APP_PASSWORD;
-‏const STORE_NAME = process.env.STORE_NAME;
+const STORE_EMAIL = process.env.STORE_EMAIL;
+const STORE_APP_PASSWORD = process.env.STORE_APP_PASSWORD;
+const STORE_NAME = process.env.STORE_NAME;
 
 /*
-‏EMAIL TRANSPORT
+EMAIL TRANSPORT
 */
-‏const transporter = nodemailer.createTransport({
-‏  service: "gmail",
-‏  auth: {
-‏    user: STORE_EMAIL,
-‏    pass: STORE_APP_PASSWORD
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: STORE_EMAIL,
+    pass: STORE_APP_PASSWORD
   }
 });
 
 /*
-‏EMAIL TEMPLATES
+EMAIL TEMPLATES
 */
-‏const emails  = [
+const emails  = [
   {
     delay: 60 * 60 * 1000,
     subject: "You left something behind 🛒",
